@@ -1,0 +1,5 @@
+Metodo: GET - URL: undefined - Data: 1/11/2026
+Metodo: GET - URL: undefined - Data: 1/11/2026
+Metodo: GET - URL: undefined - Data: 1/11/2026
+Metodo: GET - URL: /blogPost - Data: 1/11/2026
+Metodo: GET - URL: /authors - Data: 1/11/2026
