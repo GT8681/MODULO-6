@@ -1,4 +1,5 @@
-const BlogSchema = require('./blog.schema');
+const blogSchema = require("./blog.schema");
+const BlogSchema = require("./blog.schema");
 
 const getBlogPosts = async () => {
     const blogPosts = await BlogSchema.find();
@@ -6,12 +7,27 @@ const getBlogPosts = async () => {
 
 }
 
+const getBlogPostById = async (blogId) => {
+    const blog = await BlogSchema.findById(blogId);
+    return blog;
+}
 
 
-const createBlogPost = async (body) =>{
-     const newBlogPost = new BlogSchema (body)
-        const saveBlogPost = newBlogPost.save()
-        return saveBlogPost;
+const createBlogPost = async (body) => {
+    const newBlogPost = new BlogSchema(body)
+    const saveBlogPost = newBlogPost.save()
+    return saveBlogPost;
+}
+
+const updateBlogPst = async (blogId,body) => {
+const newBlogPost = {new:true}
+return await BlogSchema.findByIdAndUpdate(blogId,body,newBlogPost)
+}
+
+
+const deleteBlog = async (blogId) => {
+    return await BlogSchema.findByIdAndDelete(blogId)
+
 }
 
 
@@ -20,7 +36,10 @@ const createBlogPost = async (body) =>{
 
 module.exports = {
     getBlogPosts,
-    createBlogPost
+    createBlogPost,
+    getBlogPostById,
+    updateBlogPst,
+    deleteBlog
 }
 
 

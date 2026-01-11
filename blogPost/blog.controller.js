@@ -1,50 +1,145 @@
-const {response}=require('express');
-const blogService=require('./blog.service');
+const { response } = require('express');
+const blogService = require('./blog.service');
 
 
-const findAllBlog=async(req,res,)=>{
-    try{
-        const blogPosts=await blogService.getBlogPosts();
-        if(blogPosts.length===0){
+const findAllBlog = async (req, res,) => {
+    try {
+        const blogPosts = await blogService.getBlogPosts();
+        if (blogPosts.length === 0) {
             return res.status(404).send({
-                statusCode:404,
-                message:"No blog posts found"
+                statusCode: 404,
+                message: "No blog posts found"
             });
         }
         res.status(200).send({
-            statusCode:200,
+            statusCode: 200,
             blogPosts,
-            message:"Blog posts retrieved successfully"
+            message: "Blog posts retrieved successfully"
         });
-    }catch(error){
+    } catch (error) {
         res.status(500).send({
-            statusCode:500,
-            message:"ERROR DURING THE REQUEST"
+            statusCode: 500,
+            message: "ERROR DURING THE REQUEST"
         });
     }
 }
 
 
-const createBlog = async(req,res)=>{
-    const{body}=req;
-    try{
-        const newBlogPost=await blogService.createBlogPost(body);
-        res.status(201).send({
-            statusCode:201,
-            newBlogPost,
-            message:"Blog post created successfully"
+const findBlogOne = async (req, res) => {
+    try {
+        const { blogId } = req.params
+        if (!blogId) {
+            return res.status(400).send({
+                statusCode: 400,
+                message: "invalid request parameters"
+            });
+        }
+        const blogPost = await blogService.getBlogPostById(blogId);
+        if (!blogId) {
+            return res.status(404).send({
+                statusCode: 404,
+                message: "Blog post not found"
+            });
+
+        }
+        res.status(200).send({
+            statusCode: 200,
+            blogPost,
+            message: "Blog post retrieved successfully"
+        })
+    } catch (error) {
+        res.status(500).send({
+            statusCode: 500,
+            message: "ERROR DURING THE REQUEST"
         });
 
-}catch(error){
-    res.status(500).send({
-        statusCode:500,
-        message:"ERROR DURING THE REQUEST"
-    });
-}
+    }
 }
 
-module.exports={
+
+const createBlog = async (req, res) => {
+    const { body } = req;
+    try {
+        const newBlogPost = await blogService.createBlogPost(body);
+        res.status(201).send({
+            statusCode: 201,
+            newBlogPost,
+            message: "Blog post created successfully"
+        });
+
+    } catch (error) {
+        res.status(500).send({
+            statusCode: 500,
+            message: "ERROR DURING THE REQUEST"
+        });
+    }
+}
+
+const updateBlog = async (req, res) => {
+    const { body } = req;
+    const { blogId } = req.params;
+    try {
+        const updateBlogPost = await blogService.updateBlogPst(blogId, body);
+        if (!blogId) {
+            return res.status(400).send({
+                statusCode: 400,
+                message: "Blog post not found"
+            });
+        }
+        res.status(200).send({
+            statusCode: 200,
+            updateBlogPost,
+            message: "Blog post updated successfully"
+        });
+
+
+    } catch (error) {
+        res.status(500).send({
+            statusCode: 500,
+            message: "ERROR DURING THE REQUEST"
+        });
+
+    }
+}
+
+const deleteBlog = async (req, res) => {
+
+    const { blogId } = req.params;
+    try {
+        const deleteBlogPost = await blogService.deleteBlog(blogId);
+        if (!blogId) {
+            return res.status(400).send({
+                statusCode: 400,
+                message: "Invalid request parameters"
+            });
+        }
+        res.status(200).send({
+            statusCode: 200,
+            deleteBlogPost,
+            message: "Blog post deleted successfully"
+        });
+
+    } catch (error) {
+        res.status(500).send({
+            statusCode: 500,
+            message: "ERROR DURING THE REQUEST"
+        });
+
+    }
+
+}
+
+
+
+
+
+
+
+
+module.exports = {
     findAllBlog,
-    createBlog
+    createBlog,
+    findBlogOne,
+    updateBlog,
+    deleteBlog
 };
-    
