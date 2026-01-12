@@ -2,20 +2,20 @@ const blogSchema = require("./blog.schema");
 const BlogSchema = require("./blog.schema");
 
 const getBlogPosts = async () => {
-    const blogPosts = await BlogSchema.find();
+    const blogPosts = await BlogSchema.find().populate('author');
     return blogPosts;
 
 }
 
 const getBlogPostById = async (blogId) => {
-    const blog = await BlogSchema.findById(blogId);
+    const blog = await BlogSchema.findById(blogId).populate('author');
     return blog;
 }
 
 
 const createBlogPost = async (body) => {
     const newBlogPost = new BlogSchema(body)
-    const saveBlogPost = newBlogPost.save()
+    const saveBlogPost = await newBlogPost.save()
     return saveBlogPost;
 }
 

@@ -60,6 +60,13 @@ const findBlogOne = async (req, res) => {
 const createBlog = async (req, res) => {
     const { body } = req;
     try {
+        if (!body.author) {
+            return res.status(400).send({
+                statusCode: 400,
+                message: "Author ID is required to create a blog post"
+            });
+        }
+
         const newBlogPost = await blogService.createBlogPost(body);
         res.status(201).send({
             statusCode: 201,
