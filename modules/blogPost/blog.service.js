@@ -1,35 +1,35 @@
+const commentSchema = require("../comment/comment.schema");
 const blogSchema = require("./blog.schema");
-const BlogSchema = require("./blog.schema");
+
 
 const getBlogPosts = async () => {
-    const blogPosts = await BlogSchema.find().populate('author');
+    const blogPosts = await blogSchema.find().populate('author');
     return blogPosts;
 
 }
 
 const getBlogPostById = async (blogId) => {
-    const blog = await BlogSchema.findById(blogId).populate('author');
+    const blog = await blogSchema.findById(blogId).populate('author');
     return blog;
 }
 
 
 const createBlogPost = async (body) => {
-    const newBlogPost = new BlogSchema(body)
+    const newBlogPost = new blogSchema(body)
     const saveBlogPost = await newBlogPost.save()
     return saveBlogPost;
 }
 
 const updateBlogPst = async (blogId,body) => {
 const newBlogPost = {new:true}
-return await BlogSchema.findByIdAndUpdate(blogId,body,newBlogPost)
+return await blogSchema.findByIdAndUpdate(blogId,body,newBlogPost)
 }
-
 
 const deleteBlog = async (blogId) => {
-    return await BlogSchema.findByIdAndDelete(blogId)
-
+    return await blogSchema.findByIdAndDelete(blogId)
+  
+   
 }
-
 
 
 

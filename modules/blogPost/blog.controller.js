@@ -109,32 +109,40 @@ const updateBlog = async (req, res) => {
     }
 }
 
-const deleteBlog = async (req, res) => {
 
+const deleteBlog = async (req, res) => {
     const { blogId } = req.params;
+
     try {
-        const deleteBlogPost = await blogService.deleteBlog(blogId);
         if (!blogId) {
             return res.status(400).send({
                 statusCode: 400,
-                message: "Invalid request parameters"
+                message: "Blog ID is required"
             });
         }
+
+        const deletedBlogPost = await blogService.deleteBlog(blogId);
+
+        if (!deletedBlogPost) {
+            return res.status(404).send({
+                statusCode: 404,
+                message: "Blog post not found"
+            });
+        }
+
         res.status(200).send({
             statusCode: 200,
-            deleteBlogPost,
+            deletedBlogPost,
             message: "Blog post deleted successfully"
         });
-
     } catch (error) {
+        console.error("Error in deleteBlog:", error.message);
         res.status(500).send({
             statusCode: 500,
-            message: "ERROR DURING THE REQUEST"
+            message: error.message || "ERROR DURING THE REQUEST"
         });
-
     }
-
-}
+};
 
 
 

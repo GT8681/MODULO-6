@@ -35,6 +35,7 @@ const BlogPost=new mongoose.Schema({
         type:String,
         required:true,
         min:20
+   
     }
 } , { timestamps: true,  strict: true });
 

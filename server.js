@@ -5,9 +5,10 @@ const cors = require('cors');
 const startServer = require('./database/index');
 
 
-const authorRoutes = require('./author/author.route');
-const blogRoutes = require('./blogPost/blog.route');
+const authorRoutes = require('./modules/author/author.route');
+const blogRoutes = require('./modules/blogPost/blog.route');
 const userRoutes = require('./users/users.route');
+const commentRoutes = require('./modules/comment/comment.route');
 
 
 const checkAuth = require('./middlewares/index');
@@ -34,9 +35,12 @@ app.use(counterVisitator);
 
 
 
+
+app.use("/", commentRoutes);
 app.use("/", authorRoutes);
 app.use("/", blogRoutes);
 app.use("/", userRoutes);
+
 
 
 
