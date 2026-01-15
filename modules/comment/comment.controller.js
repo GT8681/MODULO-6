@@ -9,7 +9,7 @@ const findCommentsByBlogPost = async (req, res) => {
             totalComments,
             totalPages,
             comments
-        }= await commentService.getComments(Number(page),Number(pageSize),blogPostId);
+        }= await commentService.getComments(page,pageSize,blogPostId);
         if (comments.length === 0) {
             return res.status(404).send({
                 statusCode: 404,
