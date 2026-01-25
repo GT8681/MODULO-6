@@ -1,0 +1,26 @@
+import { BrowserRouter, Routes, Route, Navigate  } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Navbar from "./navbar/Navbar";
+
+
+const App = () => {
+  return (
+    <>
+      <BrowserRouter>
+      <Navbar/>
+        <Routes>
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Dashboard" element={<Dashboard/>} />
+          <Route path="*" element={<Navigate to="/Login" />} />
+          <Route path="/Dashboard" element={<Dashboard/>} />
+
+        </Routes>
+    </BrowserRouter>
+    </>
+
+  );
+}
+
+export default App;
