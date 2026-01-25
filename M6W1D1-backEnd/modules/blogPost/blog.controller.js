@@ -145,9 +145,21 @@ const deleteBlog = async (req, res) => {
 };
 
 
-
-
-
+const uploadCloud = async (req, res) => {
+    try {
+        const img = req.file.path;
+        res
+        .status(200)
+        .json({img : img});
+        
+        
+    } catch (error) {
+        res.status(500).send({
+            statusCode: 500,
+            message: "ERROR DURING THE REQUEST"
+        });
+    }
+}
 
 
 
@@ -156,5 +168,6 @@ module.exports = {
     createBlog,
     findBlogOne,
     updateBlog,
-    deleteBlog
+    deleteBlog,
+    uploadCloud
 };

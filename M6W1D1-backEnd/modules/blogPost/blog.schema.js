@@ -13,7 +13,7 @@ const BlogPost=new mongoose.Schema({
     cover:{
         type:String,
         required:true,
-        default:"https://www.example.com/default-cover.jpg"
+        default:"https://picsum.photos/id/237/200/300"
     },
     readTime:{
         value:{
@@ -41,7 +41,7 @@ const BlogPost=new mongoose.Schema({
     content:{
         type:String,
         required:true,
-        min:20
+    
    
     }
 } , { timestamps: true,  strict: true });
