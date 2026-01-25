@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import './Login.css'
+import { Link } from 'react-router-dom';
 
 
 
@@ -93,23 +94,23 @@ const Login = () => {
 
                                     <div className='d-grid mb-4'>
 
-                                  
 
-                                    <button
-                                        type='submit'
-                                        className='btn btn-login btn-primary w-100v text-white shadow-sm mx-auto'
-                                        disabled={isLoding}
-                                    >
-                                        {isLoding ? (
-                                            <>
-                                                <span className='spinner-border spinner-border-sm me-2' role="status" aria-hidden="true">
-                                                </span>
-                                                Caricamento.......
-                                            </>
-                                        ) : (
-                                            'Login'
-                                        )}
-                                    </button>
+
+                                        <button
+                                            type='submit'
+                                            className='btn btn-login btn-primary w-100v text-white shadow-sm mx-auto'
+                                            disabled={isLoding}
+                                        >
+                                            {isLoding ? (
+                                                <>
+                                                    <span className='spinner-border spinner-border-sm me-2' role="status" aria-hidden="true">
+                                                    </span>
+                                                    Caricamento.......
+                                                </>
+                                            ) : (
+                                                'Login'
+                                            )}
+                                        </button>
                                     </div>
 
                                     <div className='text-center m-3'>
@@ -117,12 +118,9 @@ const Login = () => {
 
                                     </div>
                                 </form>
-                                <div className='text-center mt-4'>
+                                <div className='text-center mt-4 d-flex justify-content-center align-items-center flex-column'>
                                     <span className='small text-muted me-4 text-success-emphasis' >VUOI REGISTRARTI?</span>
-                                    <a href="/register" className='small fw-bold text-decoration-none text-capitalize'>
-                                        CREA  ACCOUNT
-                                    </a>
-
+                                    <p> <Link to="/RegistrationAccont"> CREA  ACCOUNT</Link> </p>
                                 </div>
 
                             </div>

@@ -1,13 +1,15 @@
 import './navbar.css';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 const NavBar = () => {
+     const navigate = useNavigate();
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light border-botton  shadow-sm ">
 
-            <div container>
+            <div className='container'>
                 <div className='d-flex align-items-center justify-align-center alingn-content-between'>
                     <a className="navbar-brand d-flex align-items-center justify-content-between" href="#">
                         <img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/383385910/original/5d147971e4752a16a4f33826a53c84f1db6e90a8/do-restaurant-fastfood-bbq-food-truck-and-3dfood-logo-design.jpg"
@@ -34,17 +36,17 @@ const NavBar = () => {
 
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
-                        <li className="nav-item">
-                            <a className="nav-link active fs-2 fw-bold" aria-current="page" href="#">Home</a>
+                        <li className="nav-item m-3">
+                        <button className='back-btn' onClick={() => navigate('/login')}>  HOME   </button>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link fs-2 fw-bold" href="#">Menu</a>
+                        <li className="nav-item m-3">
+                        <button className='back-btn' onClick={() => navigate('/RegistrationAccont')}>  REGISTRATI </button>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link fs-2 fw-bold" href="#">About Us</a>
+                        <li className="nav-item m-3">
+                        <button className='back-btn' onClick={() => navigate('/login')}>  CONTATTI  </button>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link fs-2 fw-bold" href="#">Contact</a>
+                        <li className="nav-item m-3">
+                        <button className='back-btn' onClick={() => navigate('/login')}>  LOGIN  </button>
                         </li>
                     </ul>
                 </div>
