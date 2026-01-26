@@ -13,7 +13,8 @@ const BlogPost=new mongoose.Schema({
     cover:{
         type:String,
         required:true,
-        default:"https://picsum.photos/id/237/200/300"
+        default:""
+    
     },
     readTime:{
         value:{

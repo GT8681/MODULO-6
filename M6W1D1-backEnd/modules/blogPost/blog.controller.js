@@ -1,8 +1,11 @@
 const { response } = require('express');
 const blogService = require('./blog.service');
+const blogModel = require('./blog.schema');
 
 
 const findAllBlog = async (req, res,) => {
+    console.log('file ricevuto', req.file);
+    console.log('body ricevuto',req.body);
     try {
         const blogPosts = await blogService.getBlogPosts();
         if (blogPosts.length === 0) {
@@ -58,26 +61,26 @@ const findBlogOne = async (req, res) => {
 
 
 const createBlog = async (req, res) => {
-    const { body } = req;
+    console.log('richiesta arriavta nel controller');
     try {
-        if (!body.author) {
-            return res.status(400).send({
-                statusCode: 400,
-                message: "Author ID is required to create a blog post"
-            });
-        }
-
-        const newBlogPost = await blogService.createBlogPost(body);
-        res.status(201).send({
-            statusCode: 201,
-            newBlogPost,
-            message: "Blog post created successfully"
-        });
+      
+        const coverUrl =  req.file ? req.file.path : req.body.cover;
+        const newBlog = new blogModel({
+            ...req.body,
+            cover:coverUrl,
+            readTime:typeof req.body.readTime === 'string' ?
+            JSON.parse(req.body.readTime) : req.body.readTime
+        });      
+       
+        await newBlog.save();
+        res.status(201)
+        .json(newBlog)
 
     } catch (error) {
+        console.log('errore dettagliato',error);
         res.status(500).send({
             statusCode: 500,
-            message: "ERROR DURING THE REQUEST"
+            message: "ERROR DURING THE REQUEST e questoooooo"
         });
     }
 }
@@ -149,10 +152,10 @@ const uploadCloud = async (req, res) => {
     try {
         const img = req.file.path;
         res
-        .status(200)
-        .json({img : img});
-        
-        
+            .status(200)
+            .json({ img: img });
+
+
     } catch (error) {
         res.status(500).send({
             statusCode: 500,

@@ -18,7 +18,7 @@ const NavBar = () => {
                             height={100}
                             className='d-inline-block align-text-top me-2 p-2 ' />
                         <h1 className='title fs-1 fs-md-2 m-2 ,-md-5'>
-                            StriveBlogResturant
+                            StriveBlog
                         </h1>
                     </a>
                 </div>
@@ -37,7 +37,7 @@ const NavBar = () => {
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
                         <li className="nav-item m-3">
-                        <button className='back-btn' onClick={() => navigate('/login')}>  HOME   </button>
+                        <button className='back-btn' onClick={() => navigate('/Dashboard')}>  HOME   </button>
                         </li>
                         <li className="nav-item m-3">
                         <button className='back-btn' onClick={() => navigate('/RegistrationAccont')}>  REGISTRATI </button>

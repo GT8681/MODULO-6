@@ -12,9 +12,9 @@ cloudinary.config({
 const cloudStorageMuler = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-        folder: 'uploads',
-        format: async (req, file) => 'jpg',
-        public_id: (req, file) => file.name
+        folder: 'blog_covers',
+        format: async (req, file) => ['jpg','png','jpeg'],
+        public_id: (req, file) => `blog-${Date.now()}`  
     }
 })
 
