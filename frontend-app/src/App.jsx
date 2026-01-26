@@ -4,6 +4,7 @@ import Dashboard from './home/Dashboard';
 import Login from "./pages/Login";
 import Navbar from "./navbar/Navbar";
 import RegistrationAccont from "./pages/RegistrationAccont";
+import Footer from './footer/Footer';
 
 
 
@@ -18,9 +19,8 @@ const App = () => {
           <Route path="/Dashboard" element={<Dashboard/>} />
           <Route path="*" element={<Dashboard/>} />
           <Route path="/RegistrationAccont" element={<RegistrationAccont/>} />
-
-
         </Routes>
+        <Footer/>
     </BrowserRouter>
     </>
 
