@@ -12,18 +12,20 @@ const commentRoutes = require('./modules/comment/comment.route');
 const authRoutes = require('./modules/auth/auth.router');
 
 // middelwares
+
 const checkAuth = require('./middlewares/index');
 const counterRichieste = require('./middlewares/counterRichieste');
 const logDataRichiesta = require('./middlewares/logDataRichiesta');
 const counterVisitator = require('./middlewares/counterVisitator');
 const verifyToken = require('./middlewares/verifityToken')
 
+const app = express();
 
 const PORT = 4545;
 
+//app.use('/uploads', express.static(path.join(__dirname,'./uploads')))
 
 
-const app = express();
 
 app.use(cors());
 app.use(express.json());
@@ -33,6 +35,7 @@ app.use(express.json());
 //app.use(counterRichieste);
 //app.use(logDataRichiesta);
 //app.use(counterVisitator);
+
 
 
 

@@ -1,6 +1,6 @@
 const { response } = require('express');
 const blogService = require('./blog.service');
-const blogModel = require('./blog.schema');
+const Blog = require('./blog.schema');
 
 
 const findAllBlog = async (req, res,) => {
@@ -61,20 +61,18 @@ const findBlogOne = async (req, res) => {
 
 
 const createBlog = async (req, res) => {
-    console.log('richiesta arriavta nel controller');
+    
     try {
       
-        const coverUrl =  req.file ? req.file.path : req.body.cover;
-        const newBlog = new blogModel({
-            ...req.body,
-            cover:coverUrl,
-            readTime:typeof req.body.readTime === 'string' ?
-            JSON.parse(req.body.readTime) : req.body.readTime
-        });      
-       
-        await newBlog.save();
-        res.status(201)
-        .json(newBlog)
+      const newBlogData = req.body;
+      if(req.file){
+        newBlogData.cover = req.file.path;
+       }
+       const blog = new Blog(newBlogData);
+       await blog.save();
+        res
+        .status(201)
+        .json(blog)
 
     } catch (error) {
         console.log('errore dettagliato',error);
@@ -150,13 +148,12 @@ const deleteBlog = async (req, res) => {
 
 const uploadCloud = async (req, res) => {
     try {
-        const img = req.file.path;
-        res
+       const img = req.file.path
+       res
             .status(200)
-            .json({ img: img });
-
-
+            .json({ img : img})
     } catch (error) {
+        console.log('errore upload', error)
         res.status(500).send({
             statusCode: 500,
             message: "ERROR DURING THE REQUEST"

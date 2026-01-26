@@ -9,16 +9,16 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET
 })
 
-const cloudStorageMuler = new CloudinaryStorage({
+const cloudStorage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-        folder: 'blog_covers',
-        format: async (req, file) => ['jpg','png','jpeg'],
-        public_id: (req, file) => `blog-${Date.now()}`  
+        folder: 'uploads',
+        format: async (req, file) => 'jpg',
+        public_id: (req, file) => file.name
     }
 })
 
-const uploadCloud = multer({ storage: cloudStorageMuler });
+const uploadCloud = multer({ storage: cloudStorage });
 
 module.exports = {
     uploadCloud

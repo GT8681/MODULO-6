@@ -34,25 +34,25 @@ const Home = () =>{
 if(loading) return <div className="loading"> Caricamento Dati....... </div>
 
 return (
-    <div className="home-container">
+    <div className="home-container ">
         <header className="home-header">
             <h1>I migliori Blog di sempre</h1>
             <p>Scopri e recensisci i sapori della citta'</p>
         </header>
-        <div className="posts-grid">
+        <div className="posts-grid d-flex col-12 col-md-4 ">
              {
                 posts.map((post) => (
-                    <div key={post._id} className="resturant-card p-3">
-                        <img src={post.cover} alt={post.title} className="card-image"/>
+                    <div key={post._id} className="resturant-card  border border-4 ">
+                        <img src={post.cover} alt={post.title} className="card-image overflow-hidden w-100"/>
                         <div className="card-body">
-                            <span className="category">{post.category}</span>
-                            <h3>{post.title}</h3>
+                            <span className="category ">{post.category}</span>
+                            <h3 className="p-2 text-center">{post.title}</h3>
                             <p>{post.content.substring(0,100)}....</p>
-                            <div className="card-footer">
-                                <span>tempo di lettura: {post.readTime.value}
+                            <div className="card-footer text-center">
+                                <span>tempo di lettura: {post.readTime?.value}
                                     {post.readTime.unit}
                                 </span>
-                                <Link to={`/blogPost/${post._id}`} className="read-more">Vedi dettagli
+                                <Link to={`/blogPost/${post._id}`} className="read-more m-3">Vedi dettagli
                                 </Link>
 
                             </div>
