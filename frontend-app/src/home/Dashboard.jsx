@@ -46,9 +46,9 @@ return (
                         <img src={post.cover} alt={post.title} className="card-image overflow-hidden w-100"/>
                         <div className="card-body">
                             <span className="category ">{post.category}</span>
-                            <h3 className="p-2 text-center">{post.title}</h3>
+                            <h3 className=" text-center">{post.title}</h3>
                             <p>{post.content.substring(0,100)}....</p>
-                            <div className="card-footer text-center">
+                            <div className="card-footer ">
                                 <span>tempo di lettura: {post.readTime?.value}
                                     {post.readTime.unit}
                                 </span>
