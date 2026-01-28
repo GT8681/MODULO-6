@@ -5,6 +5,7 @@ import './RegistrationAccont.css';
 
 const RegistrationAccont = () => {
 
+    const isLogged = localStorage.getItem('token');
 
     const [formData, setFormData] = useState({
         name: '',
@@ -91,11 +92,16 @@ const RegistrationAccont = () => {
                 </button>
             </form>
             <div className="mt-3 text-center">
+                {
+                    isLogged && (
+
+                        <button className='back-btn' type='button' onClick={() => navigate('/login')}>
+                            HOME
+                        </button>
+                    )
+                }
 
 
-                <button className='back-btn' type='button' onClick={() => navigate('/login')}>
-                    HOME
-                </button>
             </div>
         </div>
     </div>

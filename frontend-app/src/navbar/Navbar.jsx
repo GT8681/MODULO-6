@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
     const navigate = useNavigate();
+    const token = localStorage.getItem('token');
     const isAuthenthicated = localStorage.getItem('token');
 
     const handleLogout = () => {
@@ -44,9 +45,14 @@ const NavBar = () => {
 
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
-                        <li className="nav-item m-3">
-                            <button className='back-btn' onClick={() => navigate('/Dashboard')}>  HOME   </button>
-                        </li>
+
+                        {token && (
+
+                            <li className="nav-item m-3">
+                                <button className='back-btn' onClick={() => navigate('/Dashboard')}>  HOME   </button>
+                            </li>
+                        )
+                        }
                         <li className="nav-item m-3">
                             <button className='back-btn' onClick={() => navigate('/RegistrationAccont')}>  REGISTRATI </button>
                         </li>
