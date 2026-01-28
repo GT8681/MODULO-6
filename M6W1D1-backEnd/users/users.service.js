@@ -1,3 +1,4 @@
+const usersSchema = require('./users.schema');
 const UserSchema = require('./users.schema');
 const bcrypt = require('bcrypt');
 
@@ -18,7 +19,21 @@ const createUser = async (body) => {
 }
 
 
+const findByEmail = async (email) =>{
+  try {
+    return await usersSchema.findOne({email:email});
+
+  } catch (error) {
+    throw error
+  }
+
+  
+
+}
+
+
 module.exports = {
     getUsers,
-     createUser
+     createUser,
+     findByEmail
 }

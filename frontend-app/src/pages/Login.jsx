@@ -20,7 +20,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsLoding(true);
+        setIsLoding(true);  
         setError(null);
 
         try {
@@ -36,7 +36,7 @@ const Login = () => {
             const data = await response.json();
 
             if (response.ok) {
-                localStorage.setItem('token', data.token);
+                localStorage.setItem('token', data.token);  
                 Navigate('/dashboard');
 
 

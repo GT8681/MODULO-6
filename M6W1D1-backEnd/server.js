@@ -3,6 +3,10 @@ const cors = require('cors');
 
 
 const startServer = require('./database/index');
+const app = express();
+
+app.use(cors());
+app.use(express.json());
 
 //routers
 const authorRoutes = require('./modules/author/author.route');
@@ -10,6 +14,7 @@ const blogRoutes = require('./modules/blogPost/blog.route');
 const userRoutes = require('./users/users.route');
 const commentRoutes = require('./modules/comment/comment.route');
 const authRoutes = require('./modules/auth/auth.router');
+
 
 // middelwares
 
@@ -19,16 +24,11 @@ const logDataRichiesta = require('./middlewares/logDataRichiesta');
 const counterVisitator = require('./middlewares/counterVisitator');
 const verifyToken = require('./middlewares/verifityToken')
 
-const app = express();
+
 
 const PORT = 4545;
 
-//app.use('/uploads', express.static(path.join(__dirname,'./uploads')))
 
-
-
-app.use(cors());
-app.use(express.json());
 
 //app.use(verifyToken);
 //app.use(checkAuth);
@@ -38,17 +38,11 @@ app.use(express.json());
 
 
 
-
-
-
-
 app.use("/", commentRoutes);
 app.use("/", authorRoutes);
 app.use("/", blogRoutes);
-app.use("/", userRoutes);
 app.use("/auth", authRoutes);
-
-
+app.use("/", userRoutes);
 
 
 startServer(PORT, app);

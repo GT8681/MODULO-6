@@ -26,8 +26,21 @@ const findAll = async (req, res,) => {
 
 const newUser = async (req,res) => {
     try {
-        const {body} = req;
-        const newUser = await usersService.createUser(body);
+
+        const {email} = req.body;
+        const userExist = await usersService.findByEmail(email);
+        if(userExist){
+                return res.status(409).json({messagge: 'Email gia registrata'})
+        }
+        
+        const newUser = await usersService.createUser(req.body);
+       
+        
+        if(!newUser){
+            return res.status(409).json({messagge : 'Email gia registrata'})
+
+        }
+        
         res.status(201).send({
             statusCode: 201,
             newUser,
@@ -43,6 +56,8 @@ const newUser = async (req,res) => {
     }
 
 }
+
+
 
 module.exports = {
     findAll,

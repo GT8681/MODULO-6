@@ -5,7 +5,15 @@ import { useNavigate } from 'react-router-dom';
 
 
 const NavBar = () => {
-     const navigate = useNavigate();
+    const navigate = useNavigate();
+    const isAuthenthicated = localStorage.getItem('token');
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        alert('logout effettuato');
+        navigate('/login');
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light border-botton  shadow-sm ">
 
@@ -37,17 +45,24 @@ const NavBar = () => {
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
                         <li className="nav-item m-3">
-                        <button className='back-btn' onClick={() => navigate('/Dashboard')}>  HOME   </button>
+                            <button className='back-btn' onClick={() => navigate('/Dashboard')}>  HOME   </button>
                         </li>
                         <li className="nav-item m-3">
-                        <button className='back-btn' onClick={() => navigate('/RegistrationAccont')}>  REGISTRATI </button>
+                            <button className='back-btn' onClick={() => navigate('/RegistrationAccont')}>  REGISTRATI </button>
                         </li>
                         <li className="nav-item m-3">
-                        <button className='back-btn' onClick={() => navigate('/login')}>  CONTATTI  </button>
+                            <button className='back-btn' onClick={() => navigate('/login')}>  CONTATTI  </button>
                         </li>
-                        <li className="nav-item m-3">
-                        <button className='back-btn' onClick={() => navigate('/login')}>  LOGIN  </button>
-                        </li>
+                        {isAuthenthicated ? (
+                            <li className="nav-item m-3">
+                                <button onClick={handleLogout} className='back-btn'>LOGOUT</button></li>
+                        ) : (
+                            <li className="nav-item m-3">
+                                <button className='back-btn' onClick={() => navigate('/login')}>  LOGIN  </button>
+                            </li>
+                        )
+                        }
+
                     </ul>
                 </div>
 

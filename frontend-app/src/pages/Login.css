@@ -1,12 +1,14 @@
 
 
 .login-wrapper{
+    background-image: url('https://img.freepik.com/vettori-premium/background-tecnologico-del-gradiente-geometrico_23-2149110132.jpg?semt=ais_hybrid&w=740&q=80');
     background: linear-gradient(135deg, #le3c72  0%, #2a5298 100%);
     min-hight: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    
 
 
 }
