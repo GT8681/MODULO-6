@@ -39,7 +39,7 @@ return (
             <h1>I migliori Blog di sempre</h1>
             <p>Scopri e recensisci i sapori della citta'</p>
         </header>
-        <div className="posts-grid d-flex col-12 col-md-4 ">
+        <div className="posts-grid col-12 col-md-4 d-flex flex-column flex-md-row">
              {
                 posts.map((post) => (
                     <div key={post._id} className="resturant-card  border border-4 ">

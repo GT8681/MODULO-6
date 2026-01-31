@@ -14,6 +14,7 @@ const cloudStorage = new CloudinaryStorage({
     params: {
         folder: 'uploads',
         format: async (req, file) => 'jpg',
+        transfomation :[{width:400,heigth:600,crop:'fill',gravity:'auto'}],
         public_id: (req, file) => file.name
     }
 })
