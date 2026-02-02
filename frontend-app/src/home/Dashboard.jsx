@@ -33,7 +33,7 @@ const Home = () => {
         }
         fetchPosts();
     }, []);
-    if (loading) return <div className="loading"> Caricamento Dati.......
+    if (loading) return <div className="loading"> Caricamento Dati..
     </div>
 
 
