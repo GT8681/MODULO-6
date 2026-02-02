@@ -1,0 +1,120 @@
+.container-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.posts-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.resturant-card {
+    flex: 0 1 300px;
+    min-width: 250px;
+    max-width: 200px;
+    box-shadow: trasform 0.3s ease;
+    background-color: rgb(29, 81, 170);
+    color: #e1f5fe;
+    border-radius: 30px;
+}
+
+.card-image {
+
+    border-radius: 20px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.card-body {
+    width: 100%;
+    max-width: fit-content;
+
+}
+
+.category {
+    background: #e1f5fe;
+    color: #019b03;
+    padding: 4px 8px;
+}
+
+.read-more {
+    display: inline-block;
+    color: #3d00f3;
+    text-decoration: none;
+    font-weight: bold;
+}
+.searchContainer{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 ;
+    width: 100%;
+
+}
+.searchContainer input{
+    width: 50%;
+    min-width: 300px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 2px solid #007bff;
+    outline: none;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+.searchContainer input:focus{
+    box-shadow: 0 0 8px rgba(0,123,255,0.5);
+
+}
+.commentsArea{
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    max-height: 150px;
+    overflow-y: auto;
+    text-aling: left;
+}
+.singleComment{
+    border-bottom: 1px solid #eee;
+    padding: 5px 0;
+    font-size: 0.9rem;
+
+
+}
+.add-comment-section{
+    border-top: 1px solid dashed #ccc;
+    padding-top: 10px;
+}
+.add-comment-section input{
+    border-radius: 15px;
+    padding-left: 15px;
+    border: 1px solid #ddd;
+}
+.add-comment-section button{
+    border-radius: 15px;
+    font-weight: bold;
+}
+.comments-list-container{
+    max-height: 150px;
+    overflow: auto;
+    background: #06121e;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+.comment-bubble{
+border-bottom: 1px solid #dee2e6;
+padding: 5px 0;
+
+}
+.comments-text{
+margin: 0;
+font-size: 0.9rem;
+
+}

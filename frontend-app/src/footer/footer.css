@@ -1,0 +1,17 @@
+.container-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+.footer-top{
+   
+    background-color: rgb(8, 11, 71);
+}
+.footer{
+     background: aqua;
+}
+.footer-down{
+    color: rgb(186, 15, 15);
+    
+}
